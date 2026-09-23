@@ -1,1 +1,7 @@
-
+body {
+  margin: 0;                 /* Removes default browser spacing */
+  height: 100vh;             /* Makes the body take up 100% of the viewport height */
+  display: flex;             /* Enables Flexbox layout context */
+  justify-content: center;   /* Centers the h1 horizontally */
+  align-items: center;       /* Centers the h1 vertically */
+}
