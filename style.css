@@ -1,13 +1,45 @@
 body {
   margin: 0;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
-header {
-  text-align: center;
+.topbar {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #000000;
+  color: rgb(255, 255, 255);
+  padding: 20px 30px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 3rem;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.nav-bar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nav-bar a {
+  color: white;
+  text-decoration: none;
+  background: #ff0000;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.nav-bar a:hover {
+  background: #8a1616;
+}
+
+p {
+  margin: 20px 30px;
 }
