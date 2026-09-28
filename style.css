@@ -408,3 +408,146 @@ body {
   }
 }
 
+.info-panel {
+  max-width: 1180px;
+  margin: 0 auto 36px;
+  padding: 0 46px 12px;
+  box-sizing: border-box;
+}
+
+.info-panel-alt {
+  padding-bottom: 40px;
+}
+
+.section-heading {
+  margin-bottom: 20px;
+}
+
+.section-heading h3 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 3rem);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 20px;
+  padding: 22px 20px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.05);
+}
+
+.info-card h4 {
+  margin: 0 0 12px;
+  color: #a5141a;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.info-card p {
+  margin: 0;
+  line-height: 1.7;
+  color: #2d2d2d;
+}
+
+.calendar-list {
+  display: grid;
+  gap: 14px;
+}
+
+.calendar-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 16px;
+  padding: 16px 18px;
+  font-size: 1.04rem;
+}
+
+.calendar-item span {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a5141a;
+}
+
+.about-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 46px 60px;
+  box-sizing: border-box;
+}
+
+.about-page .section-heading {
+  margin-bottom: 24px;
+}
+
+.details-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.about-detail {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.05);
+}
+
+.about-detail summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 24px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+.about-detail summary::-webkit-details-marker {
+  display: none;
+}
+
+.about-detail summary::after {
+  content: "+";
+  float: right;
+  color: #a5141a;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.about-detail[open] summary::after {
+  content: "−";
+}
+
+.about-detail p {
+  margin: 0;
+  padding: 0 24px 22px;
+  line-height: 1.75;
+  color: #2d2d2d;
+}
+
+@media (max-width: 900px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-page,
+  .info-panel {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+
