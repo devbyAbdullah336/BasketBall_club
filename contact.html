@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Enterprise Basketball</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand-block">
+            <img src="DaddyBronEnterprise.jpg" alt="Enterprise Basketball logo" class="brand-logo">
+        </div>
+
+        <div class="brand-group">
+            <span class="brand-tag">Official Club</span>
+            <h1 class="brand-name">Enterprise BasketBall</h1>
+        </div>
+
+        <nav class="nav-bar" aria-label="Main navigation">
+            <a href="gallery.html">Gallery</a>
+            <a href="roster.html">Roster</a>
+            <a href="membership.html">Membership</a>
+            <a href="contact.html" aria-current="page">Contact Us</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html">Program</a>
+            <a href="calendar.html">Calendar</a>
+        </nav>
+    </header>
+
+    <main class="contact-page">
+        <div class="section-heading">
+            <p class="eyebrow">Get in touch</p>
+            <h3>Let’s talk basketball.</h3>
+        </div>
+        <p class="contact-intro">
+            Have a question about joining, player development, or an upcoming program? Use the message form to prepare your inquiry.
+        </p>
+
+        <div class="contact-grid">
+            <section class="contact-topics" aria-label="How we can help">
+                <article class="contact-topic">
+                    <h4>Joining the club</h4>
+                    <p>Ask about getting started, player fit, and what to expect at a first session.</p>
+                </article>
+                <article class="contact-topic">
+                    <h4>Training and programs</h4>
+                    <p>Ask about skill development, camps, or the details of a listed program.</p>
+                </article>
+                <article class="contact-topic">
+                    <h4>Schedules and general questions</h4>
+                    <p>Check the calendar for current event information, or send us a question using the form.</p>
+                </article>
+            </section>
+
+            <section class="interactive-panel contact-form-panel" aria-labelledby="contact-form-heading">
+                <div class="section-heading">
+                    <h3 id="contact-form-heading">Write a message</h3>
+                </div>
+                <p class="interactive-message">
+                    This site is a static demo, so messages are not sent or saved. Submitting the form will show a preview on this page.
+                </p>
+                <form id="contact-form">
+                    <div class="interest-form-grid contact-form-grid">
+                        <div class="program-filter">
+                            <label for="contact-name">Your name</label>
+                            <input id="contact-name" name="name" type="text" autocomplete="name" required>
+                        </div>
+                        <div class="program-filter">
+                            <label for="contact-email">Email address</label>
+                            <input id="contact-email" name="email" type="email" autocomplete="email" required>
+                        </div>
+                        <div class="program-filter">
+                            <label for="contact-topic">What is your question about?</label>
+                            <select id="contact-topic" name="topic" required>
+                                <option value="">Choose a topic</option>
+                                <option>Joining the club</option>
+                                <option>Training and programs</option>
+                                <option>Schedules and events</option>
+                                <option>Something else</option>
+                            </select>
+                        </div>
+                        <div class="program-filter">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" name="message" required></textarea>
+                        </div>
+                    </div>
+                    <button class="program-submit" type="submit">Preview message</button>
+                </form>
+                <div id="contact-preview" class="contact-preview" role="status" aria-live="polite" hidden>
+                    <h4>Message preview</h4>
+                    <p>Your message has not been sent or saved.</p>
+                    <pre id="contact-preview-content"></pre>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="contact.js"></script>
+</body>
+</html>
