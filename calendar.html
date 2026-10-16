@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar | Enterprise Basketball</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand-block">
+            <img src="DaddyBronEnterprise.jpg" alt="Enterprise Basketball logo" class="brand-logo">
+        </div>
+
+        <div class="brand-group">
+            <span class="brand-tag">Official Club</span>
+            <h1 class="brand-name">Enterprise BasketBall</h1>
+        </div>
+
+        <nav class="nav-bar" aria-label="Main navigation">
+            <a href="gallery.html">Gallery</a>
+            <a href="roster.html">Roster</a>
+            <a href="membership.html">Membership</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html">Program</a>
+            <a href="calendar.html" aria-current="page">Calendar</a>
+        </nav>
+    </header>
+
+    <main class="calendar-page">
+        <div class="calendar-heading">
+            <div>
+                <p class="eyebrow">Club Schedule</p>
+                <h2>Practice Calendar</h2>
+            </div>
+            <div class="calendar-toolbar" aria-label="Calendar navigation">
+                <button type="button" id="previous-month" aria-label="Previous month">&lt;</button>
+                <span class="calendar-month-label" id="calendar-month" aria-live="polite"></span>
+                <button type="button" id="next-month" aria-label="Next month">&gt;</button>
+                <button type="button" id="current-month">Today</button>
+            </div>
+        </div>
+
+        <p class="calendar-note">Game Days are randomized each month and placed on weekends, B.C. statutory holidays, or typical Surrey school-break dates. School break dates vary by year. Practice times and locations are still to be confirmed.</p>
+
+        <div class="calendar-scroll">
+            <div class="calendar-grid" id="calendar-grid" role="grid" aria-label="Monthly practice calendar"></div>
+        </div>
+
+        <section class="weekly-schedule" aria-labelledby="weekly-schedule-title">
+            <h3 id="weekly-schedule-title">Weekly Schedule</h3>
+            <div class="weekly-schedule-list">
+                <div class="weekly-schedule-item"><span>Twice monthly</span><strong>Skills Lab</strong><span>1st and 3rd Monday</span></div>
+                <div class="weekly-schedule-item"><span>Wednesday</span><strong>Team Competition</strong><span>Time TBC</span></div>
+                <div class="weekly-schedule-item"><span>Before each game</span><strong>Film + Review</strong><span>Time TBC</span></div>
+                <div class="weekly-schedule-item"><span>2 dates monthly</span><strong>Game Day</strong><span>Weekend / holiday / break</span></div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const weekdayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const calendarGrid = document.getElementById('calendar-grid');
+        const monthLabel = document.getElementById('calendar-month');
+        const monthFormatter = new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric' });
+        let displayedMonth = new Date();
+        displayedMonth = new Date(displayedMonth.getFullYear(), displayedMonth.getMonth(), 1);
+
+        function dateKey(date) {
+            return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+        }
+
+        function nthWeekdayOfMonth(year, month, weekday, occurrence) {
+            const first = new Date(year, month, 1);
+            const dayOffset = (weekday - first.getDay() + 7) % 7;
+            return new Date(year, month, 1 + dayOffset + (occurrence - 1) * 7);
+        }
+
+        function lastWeekdayOfMonth(year, month, weekday) {
+            const last = new Date(year, month + 1, 0);
+            const dayOffset = (last.getDay() - weekday + 7) % 7;
+            return new Date(year, month + 1, -dayOffset);
+        }
+
+        function getBcStatHolidays(year) {
+            const holidays = new Map();
+            const addHoliday = (date, name) => holidays.set(dateKey(date), name);
+            const easterYear = year;
+            const a = easterYear % 19;
+            const b = Math.floor(easterYear / 100);
+            const c = easterYear % 100;
+            const d = Math.floor(b / 4);
+            const e = b % 4;
+            const f = Math.floor((b + 8) / 25);
+            const g = Math.floor((b - f + 1) / 3);
+            const h = (19 * a + b - d - g + 15) % 30;
+            const i = Math.floor(c / 4);
+            const k = c % 4;
+            const l = (32 + 2 * e + 2 * i - h - k) % 7;
+            const m = Math.floor((a + 11 * h + 22 * l) / 451);
+            const easterMonth = Math.floor((h + l - 7 * m + 114) / 31) - 1;
+            const easterDay = ((h + l - 7 * m + 114) % 31) + 1;
+            const goodFriday = new Date(year, easterMonth, easterDay - 2);
+
+            addHoliday(new Date(year, 0, 1), "New Year's Day");
+            addHoliday(nthWeekdayOfMonth(year, 1, 1, 3), 'Family Day');
+            addHoliday(goodFriday, 'Good Friday');
+            addHoliday(nthWeekdayOfMonth(year, 4, 1, 3), 'Victoria Day');
+            addHoliday(new Date(year, 6, 1), 'Canada Day');
+            addHoliday(nthWeekdayOfMonth(year, 7, 1, 1), 'B.C. Day');
+            addHoliday(nthWeekdayOfMonth(year, 8, 1, 1), 'Labour Day');
+            addHoliday(new Date(year, 8, 30), 'National Day for Truth and Reconciliation');
+            addHoliday(nthWeekdayOfMonth(year, 9, 1, 2), 'Thanksgiving');
+            addHoliday(new Date(year, 10, 11), 'Remembrance Day');
+            addHoliday(new Date(year, 11, 25), 'Christmas Day');
+            return holidays;
+        }
+
+        function isTypicalSchoolBreak(date) {
+            const month = date.getMonth();
+            const day = date.getDate();
+            return (month === 11 && day >= 20)
+                || (month === 0 && day <= 4)
+                || (month === 2 && day >= 15);
+        }
+
+        function makeSeededRandom(seedText) {
+            let seed = 0;
+            for (const character of seedText) {
+                seed = (seed * 31 + character.charCodeAt(0)) >>> 0;
+            }
+            if (seed === 0) seed = 1;
+
+            return () => {
+                seed ^= seed << 13;
+                seed ^= seed >>> 17;
+                seed ^= seed << 5;
+                return (seed >>> 0) / 4294967296;
+            };
+        }
+
+        function getGameDayKeys(year, month, holidays) {
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const eligibleDates = [];
+            const preferredDates = [];
+
+            for (let day = 1; day <= daysInMonth; day += 1) {
+                const date = new Date(year, month, day);
+                const key = dateKey(date);
+                const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+                const isHoliday = holidays.has(key);
+                const isBreak = isTypicalSchoolBreak(date);
+
+                if (isWeekend || isHoliday || isBreak) eligibleDates.push(key);
+                if (isHoliday || isBreak) preferredDates.push(key);
+            }
+
+            const random = makeSeededRandom(`${year}-${month}-game-days`);
+            const shuffle = (dates) => {
+                for (let index = dates.length - 1; index > 0; index -= 1) {
+                    const swapIndex = Math.floor(random() * (index + 1));
+                    [dates[index], dates[swapIndex]] = [dates[swapIndex], dates[index]];
+                }
+                return dates;
+            };
+
+            const selected = preferredDates.length ? shuffle([...preferredDates]).slice(0, 1) : [];
+            const remainingDates = eligibleDates.filter((key) => !selected.includes(key));
+            return selected.concat(shuffle(remainingDates).slice(0, 2 - selected.length));
+        }
+
+        function getFilmReviewKeys(year, month) {
+            const gameDays = new Set();
+            for (let monthOffset = 0; monthOffset <= 1; monthOffset += 1) {
+                const targetMonth = new Date(year, month + monthOffset, 1);
+                const targetYear = targetMonth.getFullYear();
+                const targetMonthIndex = targetMonth.getMonth();
+                const holidays = getBcStatHolidays(targetYear);
+                getGameDayKeys(targetYear, targetMonthIndex, holidays).forEach((key) => gameDays.add(key));
+            }
+
+            return new Set([...gameDays].map((key) => {
+                const [gameYear, gameMonth, gameDay] = key.split('-').map(Number);
+                return dateKey(new Date(gameYear, gameMonth, gameDay - 1));
+            }));
+        }
+
+        function renderCalendar() {
+            const year = displayedMonth.getFullYear();
+            const month = displayedMonth.getMonth();
+            const holidays = getBcStatHolidays(year);
+            const gameDayKeys = new Set(getGameDayKeys(year, month, holidays));
+            const filmReviewKeys = getFilmReviewKeys(year, month);
+            const firstDay = new Date(year, month, 1);
+            const mondayOffset = (firstDay.getDay() + 6) % 7;
+            const gridStart = new Date(year, month, 1 - mondayOffset);
+            const today = new Date();
+            const todayKey = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
+            const cells = [];
+
+            monthLabel.textContent = monthFormatter.format(displayedMonth);
+            weekdayNames.slice(1).concat(weekdayNames[0]).forEach((weekday) => {
+                const weekendClass = weekday === 'Saturday' || weekday === 'Sunday' ? ' is-weekend-heading' : '';
+                cells.push(`<div class="calendar-weekday${weekendClass}" role="columnheader">${weekday}</div>`);
+            });
+
+            for (let index = 0; index < 42; index += 1) {
+                const date = new Date(gridStart.getFullYear(), gridStart.getMonth(), gridStart.getDate() + index);
+                const key = dateKey(date);
+                const outsideClass = date.getMonth() === month ? '' : ' is-outside-month';
+                const todayClass = key === todayKey ? ' is-today' : '';
+                const weekendClass = date.getDay() === 0 || date.getDay() === 6 ? ' is-weekend' : '';
+                const events = [];
+                const occurrence = Math.ceil(date.getDate() / 7);
+
+                if (date.getDay() === 1 && (occurrence === 1 || occurrence === 3)) events.push('Skills Lab');
+                if (date.getDay() === 3) events.push('Team Competition');
+                if (filmReviewKeys.has(key)) events.push('Film + Review');
+                if (gameDayKeys.has(key)) events.push('Game Day');
+                if (holidays.has(key)) events.push(holidays.get(key));
+
+                const eventMarkup = events.map((event) => {
+                    const isHoliday = holidays.get(key) === event;
+                    const timeLabel = isHoliday ? 'B.C. statutory holiday' : 'Time TBC';
+                    return `<div class="calendar-event"><strong>${event}</strong><span>${timeLabel}</span></div>`;
+                }).join('');
+
+                cells.push(`<div class="calendar-day${outsideClass}${todayClass}${weekendClass}" role="gridcell"><span class="calendar-date-number">${date.getDate()}</span>${eventMarkup}</div>`);
+            }
+
+            calendarGrid.innerHTML = cells.join('');
+        }
+
+        document.getElementById('previous-month').addEventListener('click', () => {
+            displayedMonth = new Date(displayedMonth.getFullYear(), displayedMonth.getMonth() - 1, 1);
+            renderCalendar();
+        });
+        document.getElementById('next-month').addEventListener('click', () => {
+            displayedMonth = new Date(displayedMonth.getFullYear(), displayedMonth.getMonth() + 1, 1);
+            renderCalendar();
+        });
+        document.getElementById('current-month').addEventListener('click', () => {
+            const today = new Date();
+            displayedMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+            renderCalendar();
+        });
+
+        renderCalendar();
+    </script>
+</body>
+</html>
