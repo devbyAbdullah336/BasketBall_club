@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs | Enterprise Basketball</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="programs.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand-block">
+            <img src="DaddyBronEnterprise.jpg" alt="Enterprise Basketball logo" class="brand-logo">
+        </div>
+
+        <div class="brand-group">
+            <span class="brand-tag">Official Club</span>
+            <h1 class="brand-name">Enterprise BasketBall</h1>
+        </div>
+
+        <nav class="nav-bar" aria-label="Main navigation">
+            <a href="gallery.html">Gallery</a>
+            <a href="roster.html">Roster</a>
+            <a href="membership.html">Membership</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html" aria-current="page">Program</a>
+            <a href="calendar.html">Calendar</a>
+        </nav>
+    </header>
+
+    <main class="about-page">
+        <div class="section-heading">
+            <p class="eyebrow">Programs</p>
+            <h3>Train with purpose. Grow your game.</h3>
+            <p class="club-description">Enterprise Basketball offers development opportunities for athletes at different stages of their journey. Program dates, age groups, and registration details will be shared as each session is scheduled.</p>
+        </div>
+
+        <section class="program-tools" aria-label="Explore programs">
+            <div class="program-filters">
+                <div class="program-filter">
+                    <label for="season-filter">Season</label>
+                    <select id="season-filter">
+                        <option value="all">Any season</option>
+                        <option value="winter">Winter</option>
+                        <option value="spring">Spring</option>
+                        <option value="summer">Summer</option>
+                        <option value="fall">Fall</option>
+                        <option value="year-round">Year-round</option>
+                    </select>
+                </div>
+                <div class="program-filter">
+                    <label for="age-filter">Age group</label>
+                    <select id="age-filter">
+                        <option value="all">Any age group</option>
+                        <option value="youth">Youth</option>
+                        <option value="teen">Teen</option>
+                        <option value="adult">Adult</option>
+                    </select>
+                </div>
+            </div>
+            <p class="program-filter-note">Filters are for exploring program types. Actual seasons and age eligibility will be confirmed when sessions are announced.</p>
+            <p id="program-count" class="program-count" aria-live="polite"></p>
+        </section>
+
+        <div class="info-grid program-grid" id="program-grid">
+            <article class="info-card program-card" id="seasonal-camps" data-season="winter spring summer fall" data-age="youth teen" data-level="developing experienced">
+                <p class="program-card-label">Seasonal</p>
+                <h4>Seasonal Skill Camps</h4>
+                <p>Focused camps during school breaks, with drills and competition in ball handling, shooting, footwork, defense, and game decisions.</p>
+                <details class="program-details">
+                    <summary>Explore camp details</summary>
+                    <p>Camp formats may include skill stations, small-sided games, and guided scrimmages. Dates, length, age eligibility, and equipment details will be announced for each session.</p>
+                </details>
+            </article>
+            <article class="info-card program-card" id="youth-clinics" data-season="year-round" data-age="youth" data-level="beginner developing">
+                <p class="program-card-label">Fundamentals</p>
+                <h4>Youth Clinics</h4>
+                <p>Welcoming, fundamentals-first sessions that build confidence with age-appropriate instruction and teamwork.</p>
+                <details class="program-details">
+                    <summary>Explore clinic details</summary>
+                    <p>Clinics can introduce movement, passing, dribbling, shooting, and team play. Specific ages and session availability will be shared when dates are announced.</p>
+                </details>
+            </article>
+            <article class="info-card program-card" id="skills-development" data-season="year-round" data-age="youth teen adult" data-level="beginner developing experienced">
+                <p class="program-card-label">Player development</p>
+                <h4>Skills Development</h4>
+                <p>Progressive training in individual technique and basketball IQ, with opportunities to apply skills in game-like situations.</p>
+                <details class="program-details">
+                    <summary>Explore development details</summary>
+                    <p>Sessions can focus on ball control, footwork, defense, and decision-making. Coaches can adapt activities to the experience level of each group.</p>
+                </details>
+            </article>
+            <article class="info-card program-card" id="shooting-finishing" data-season="year-round" data-age="teen adult" data-level="developing experienced">
+                <p class="program-card-label">Focused training</p>
+                <h4>Shooting and Finishing</h4>
+                <p>Practice shot mechanics, footwork, finishing around the basket, and making decisions under pressure.</p>
+                <details class="program-details">
+                    <summary>Explore training details</summary>
+                    <p>Repetitions may include shooting technique, finishing options, and game-speed reads. Group placement and session details will be confirmed when offered.</p>
+                </details>
+            </article>
+            <article class="info-card program-card" id="team-competition" data-season="year-round" data-age="teen" data-level="developing experienced">
+                <p class="program-card-label">Game experience</p>
+                <h4>Team Competition</h4>
+                <p>Live play that encourages communication, smart decisions, defensive effort, and team-first habits.</p>
+                <details class="program-details">
+                    <summary>Explore competition details</summary>
+                    <p>Activities may include small-sided games and organized scrimmages. Competition format and participation requirements depend on the session.</p>
+                </details>
+            </article>
+            <article class="info-card program-card" id="leadership-mindset" data-season="year-round" data-age="teen adult" data-level="developing experienced">
+                <p class="program-card-label">Beyond the game</p>
+                <h4>Leadership and Mindset</h4>
+                <p>Build accountability, resilience, preparation, and habits that help athletes support teammates on and off the court.</p>
+                <details class="program-details">
+                    <summary>Explore leadership details</summary>
+                    <p>Leadership is reinforced through communication, reflection, goal-setting, and taking responsibility as part of a team.</p>
+                </details>
+            </article>
+        </div>
+
+        <section class="interactive-panel interest-panel" aria-labelledby="interest-title">
+            <div class="section-heading">
+                <p class="eyebrow">Stay in the loop</p>
+                <h3 id="interest-title">Register your interest</h3>
+                <p class="club-description">This demonstration form shows how interest registration could work. It does not send, save, or share any information.</p>
+            </div>
+            <form id="interest-form" autocomplete="off">
+                <div class="interest-form-grid">
+                    <div class="program-filter">
+                        <label for="interest-name">Your name</label>
+                        <input id="interest-name" name="name" type="text" required>
+                    </div>
+                    <div class="program-filter">
+                        <label for="interest-email">Email address</label>
+                        <input id="interest-email" name="email" type="email" required>
+                    </div>
+                    <div class="program-filter">
+                        <label for="interest-age">Age group</label>
+                        <select id="interest-age" name="age" required>
+                            <option value="">Select an age group</option>
+                            <option value="youth">Youth</option>
+                            <option value="teen">Teen</option>
+                            <option value="adult">Adult</option>
+                        </select>
+                    </div>
+                    <div class="program-filter">
+                        <label for="interest-program">Program of interest</label>
+                        <select id="interest-program" name="program" required>
+                            <option value="">Select a program</option>
+                            <option>Seasonal Skill Camps</option>
+                            <option>Youth Clinics</option>
+                            <option>Skills Development</option>
+                            <option>Shooting and Finishing</option>
+                            <option>Team Competition</option>
+                            <option>Leadership and Mindset</option>
+                        </select>
+                    </div>
+                    <div class="program-filter">
+                        <label for="interest-level">Experience level</label>
+                        <select id="interest-level" name="level" required>
+                            <option value="">Select a level</option>
+                            <option>Beginner</option>
+                            <option>Developing</option>
+                            <option>Experienced</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="program-submit" type="submit">Preview interest registration</button>
+                <p id="form-message" class="interactive-message" role="status"></p>
+            </form>
+        </section>
+
+        <section class="info-panel-alt">
+            <div class="section-heading">
+                <p class="eyebrow">What to expect</p>
+                <h3>A supportive, competitive environment.</h3>
+            </div>
+            <div class="info-grid">
+                <article class="info-card">
+                    <h4>Skill building</h4>
+                    <p>Clear instruction and purposeful repetitions help athletes build strong fundamentals and confidence.</p>
+                </article>
+                <article class="info-card">
+                    <h4>Game application</h4>
+                    <p>Drills and competition help players connect individual skills to real decisions on the court.</p>
+                </article>
+                <article class="info-card">
+                    <h4>Player growth</h4>
+                    <p>Effort, discipline, and teamwork are emphasized alongside basketball development.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

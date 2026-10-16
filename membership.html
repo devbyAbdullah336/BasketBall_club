@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership | Enterprise Basketball</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="membership.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand-block">
+            <img src="DaddyBronEnterprise.jpg" alt="Enterprise Basketball logo" class="brand-logo">
+        </div>
+
+        <div class="brand-group">
+            <span class="brand-tag">Official Club</span>
+            <h1 class="brand-name">Enterprise BasketBall</h1>
+        </div>
+
+        <nav class="nav-bar" aria-label="Main navigation">
+            <a href="gallery.html">Gallery</a>
+            <a href="roster.html">Roster</a>
+            <a href="membership.html" aria-current="page">Membership</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html">Program</a>
+            <a href="calendar.html">Calendar</a>
+        </nav>
+    </header>
+
+    <main class="about-page">
+        <div class="section-heading">
+            <p class="eyebrow">Membership</p>
+            <h3>Build your game with Enterprise.</h3>
+            <p class="club-description">
+                Interested in training with Enterprise Basketball? Tell us a little about the player and what you’re looking for.
+            </p>
+        </div>
+
+        <div class="info-grid">
+            <article class="info-card">
+                <h4>Skill development</h4>
+                <p>Build basketball fundamentals through purposeful practice in areas like shooting, footwork, defense, and decision-making.</p>
+            </article>
+            <article class="info-card">
+                <h4>Team-first habits</h4>
+                <p>Grow confidence, communication, discipline, and accountability in a competitive, supportive environment.</p>
+            </article>
+            <article class="info-card">
+                <h4>Find the right fit</h4>
+                <p>Share the player’s age group, experience, and interests so you can ask about suitable opportunities.</p>
+            </article>
+        </div>
+
+        <section class="interactive-panel" aria-labelledby="membership-form-heading">
+            <div class="section-heading">
+                <p class="eyebrow">Next step</p>
+                <h3 id="membership-form-heading">Register your interest</h3>
+                <p class="club-description">
+                    Fees, eligibility, and session availability are not listed here. Please confirm those details before making a commitment.
+                </p>
+            </div>
+            <p class="interactive-message">
+                This is a static demo: your information is not sent or saved. Preview your interest below, then use the
+                <a href="contact.html">Contact Us page</a> to ask about actual membership availability.
+            </p>
+            <form id="membership-form">
+                <div class="interest-form-grid">
+                    <div class="program-filter">
+                        <label for="member-name">Player’s name</label>
+                        <input id="member-name" name="name" type="text" autocomplete="name" required>
+                    </div>
+                    <div class="program-filter">
+                        <label for="member-email">Parent/guardian email</label>
+                        <input id="member-email" name="email" type="email" autocomplete="email" required>
+                    </div>
+                    <div class="program-filter">
+                        <label for="member-age">Age group</label>
+                        <select id="member-age" name="age" required>
+                            <option value="">Select an age group</option>
+                            <option>Youth</option>
+                            <option>Teen</option>
+                            <option>Adult</option>
+                        </select>
+                    </div>
+                    <div class="program-filter">
+                        <label for="member-experience">Experience level</label>
+                        <select id="member-experience" name="experience" required>
+                            <option value="">Select an experience level</option>
+                            <option>Beginner</option>
+                            <option>Developing</option>
+                            <option>Experienced</option>
+                    </select>
+                    </div>
+                    <div class="program-filter">
+                        <label for="member-interest">What are you interested in?</label>
+                        <select id="member-interest" name="interest" required>
+                            <option value="">Choose an area</option>
+                            <option>Skills development</option>
+                            <option>Seasonal camps or clinics</option>
+                            <option>Team competition</option>
+                            <option>Not sure yet</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="program-submit" type="submit">Preview membership interest</button>
+            </form>
+            <div id="membership-preview" class="contact-preview" role="status" aria-live="polite" hidden>
+                <h4>Membership interest preview</h4>
+                <p>Your details have not been sent or saved.</p>
+                <pre id="membership-preview-content"></pre>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
